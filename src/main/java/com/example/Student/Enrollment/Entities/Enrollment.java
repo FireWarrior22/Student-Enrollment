@@ -11,11 +11,11 @@ public class Enrollment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
@@ -46,6 +46,9 @@ public class Enrollment {
         this.enrolledAt = enrolledAt;
         this.status = status;
         this.grade = grade;
+    }
+
+    public Enrollment() {
     }
 
     public Student getStudent() {
@@ -82,6 +85,10 @@ public class Enrollment {
 
     public Grade getGrade() {
         return grade;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setGrade(Grade grade) {
